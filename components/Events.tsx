@@ -1,11 +1,12 @@
 "use client";
-import { motion } from "framer-motion";
 import { Flower2, GlassWater, House, Clock, MapPin } from "lucide-react";
 import { events } from "@/lib/data";
 import SectionTitle from "./SectionTitle";
 import Reveal from "./Reveal";
+import TiltCard from "./TiltCard";
 
 const icons = { poruwa: Flower2, reception: GlassWater, homecoming: House } as const;
+const dirs = ["left", "rise", "right"] as const;
 
 export default function Events() {
   return (
@@ -15,12 +16,8 @@ export default function Events() {
         {events.map((e, i) => {
           const Icon = icons[e.icon as keyof typeof icons];
           return (
-            <Reveal key={e.title} delay={i * 0.12}>
-              <motion.article
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                className="glass h-full p-8 text-center"
-              >
+            <Reveal key={e.title} variant={dirs[i % 3]} delay={i * 0.1}>
+              <TiltCard className="glass h-full p-8 text-center">
                 <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-gold/50 bg-ivory text-gold">
                   <Icon size={28} strokeWidth={1.4} />
                 </div>
@@ -33,7 +30,7 @@ export default function Events() {
                   <MapPin size={16} className="mt-0.5 shrink-0 text-gold" /> {e.place}
                 </p>
                 <p className="mt-5 text-sm italic leading-relaxed text-emerald/60">{e.note}</p>
-              </motion.article>
+              </TiltCard>
             </Reveal>
           );
         })}

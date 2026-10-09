@@ -30,7 +30,7 @@ export default function Countdown() {
   return (
     <section id="countdown" className="px-5 py-24 sm:py-32">
       <SectionTitle title="Counting down to forever" subtitle="Every second brings us closer to the day we say yes." />
-      <Reveal className="mx-auto grid max-w-3xl grid-cols-4 gap-3 sm:gap-6">
+      <Reveal variant="zoom" className="mx-auto grid max-w-3xl grid-cols-4 gap-3 sm:gap-6">
         {items.map(([label, value]) => (
           <div key={label} className="glass flex flex-col items-center px-1 py-6 sm:py-10">
             <div className="relative h-12 overflow-hidden sm:h-20">

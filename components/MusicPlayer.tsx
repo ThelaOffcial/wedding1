@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Pause, Play } from "lucide-react";
 import { wedding } from "@/lib/data";
@@ -7,6 +7,21 @@ import { wedding } from "@/lib/data";
 export default function MusicPlayer() {
   const audio = useRef<HTMLAudioElement>(null);
   const [on, setOn] = useState(false);
+
+  useEffect(() => {
+    const start = async () => {
+      const a = audio.current;
+      if (!a) return;
+      try {
+        await a.play();
+        setOn(true);
+      } catch {
+        setOn(false);
+      }
+    };
+    window.addEventListener("invite:open", start);
+    return () => window.removeEventListener("invite:open", start);
+  }, []);
 
   async function toggle() {
     const a = audio.current;

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html { scroll-behavior: smooth; }
-body { background: #FBF7EE; color: #0A3328; -webkit-font-smoothing: antialiased; }
+body { background: #FBF7EE; color: #0A3328; -webkit-font-smoothing: antialiased; overflow-x: clip; }
 ::selection { background: #D9C08C; color: #0A3328; }
 
 @layer components {

@@ -1,4 +1,6 @@
 import Particles from "@/components/Particles";
+import ScrollProgress from "@/components/ScrollProgress";
+import Stage from "@/components/Stage";
 import Hero from "@/components/Hero";
 import Countdown from "@/components/Countdown";
 import Events from "@/components/Events";
@@ -13,7 +15,8 @@ export default function Page() {
   return (
     <>
       <Particles />
-      <main className="relative z-10">
+      <ScrollProgress />
+      <Stage>
         <Hero />
         <Countdown />
         <Events />
@@ -21,7 +24,7 @@ export default function Page() {
         <Venue />
         <Rsvp />
         <Footer />
-      </main>
+      </Stage>
       <MusicPlayer />
       <WhatsAppButton />
     </>

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Jost } from "next/font/google";
 import "./globals.css";
+import Providers from "@/components/Providers";
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" });
 const jost = Jost({ subsets: ["latin"], variable: "--font-jost", display: "swap" });
@@ -20,7 +21,7 @@ export const viewport: Viewport = { themeColor: "#FBF7EE", width: "device-width"
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${playfair.variable} ${jost.variable}`}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans"><Providers>{children}</Providers></body>
     </html>
   );
 }
